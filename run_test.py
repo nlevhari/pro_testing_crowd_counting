@@ -59,7 +59,7 @@ def main(args, debug=False):
         standard_transforms.ToTensor(), 
         standard_transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
     ])
-    for im in glob.glob('./protest_images/*'):
+    for im in glob.glob('./protest_images/23-02-23/*'):
         # set your image path here
         img_path = im
         # load the images
@@ -94,8 +94,8 @@ def main(args, debug=False):
         for p in points:
             img_to_draw = cv2.circle(img_to_draw, (int(p[0]), int(p[1])), size, (0, 0, 255), -1)
         # save the visualized image
-        print(os.path.join(args.output_dir, 'pred{}.jpg'.format(predict_cnt)))
-        cv2.imwrite(os.path.join(args.output_dir, 'pred{}.jpg'.format(predict_cnt)), img_to_draw)
+        print(os.path.join(args.output_dir, '{}_pred{}.jpg'.format((im.split('/')[-1]).split('.')[0], predict_cnt)))
+        cv2.imwrite(os.path.join(args.output_dir, '{}_pred{}.jpg'.format((im.split('/')[-1]).split('.')[0], predict_cnt)), img_to_draw)
 
 
 if __name__ == '__main__':

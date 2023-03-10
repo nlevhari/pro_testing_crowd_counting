@@ -6,7 +6,7 @@ from util.misc import (NestedTensor, nested_tensor_from_tensor_list,
                        accuracy, get_world_size, interpolate,
                        is_dist_avail_and_initialized)
 
-from .backbone import build_backbone
+from .backbone import build_backbone, build_backbone_for_pipeline
 from .matcher import build_matcher_crowd
 
 import numpy as np
@@ -340,3 +340,12 @@ def build(args, training):
                                 eos_coef=args.eos_coef, losses=losses)
 
     return model, criterion
+
+def build_for_pipeline():
+    # treats persons as a single class
+    num_classes = 1
+
+    backbone = build_backbone_for_pipeline()
+    model = P2PNet(backbone, 2, 2)
+    return model
+

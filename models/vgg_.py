@@ -25,7 +25,7 @@ model_urls = {
 
 
 model_paths = {
-    'vgg16_bn': '/Users/nivlevhari/repos/p2pnet/torchvision_models/vgg16_bn-6c64b313.pth',
+    'vgg16_bn': './torchvision_models/vgg16_bn-6c64b313.pth',
     'vgg16': '/apdcephfs/private_changanwang/checkpoints/vgg16-397923af.pth',
 
 }

@@ -64,5 +64,9 @@ def build_backbone(args):
     backbone = Backbone_VGG(args.backbone, True)
     return backbone
 
+def build_backbone_for_pipeline():
+    backbone = Backbone_VGG('vgg16_bn', True)
+    return backbone
+
 if __name__ == '__main__':
     Backbone_VGG('vgg16', True)
